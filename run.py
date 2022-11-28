@@ -45,7 +45,7 @@ places an empty space "_" for each word
 
 
 def asks_kick():
-    kick = input("\n\nWhich letter do you wanny try? ")
+    kick = input("\n\nWhich letter do you wanny try?  \n\n")
     kick = kick.strip().upper()
     return kick
     """
@@ -68,7 +68,7 @@ def correct_kick(kick, right_letters, secret_word):
 
 
 def winner_message():
-    print("Congratulations! You won!!!")
+    print("\n\nCongratulations! You won!!!")
     print("       ___________      ")
     print("      '._==_==_=_.'     ")
     print("      .-\\:      /-.    ")
@@ -87,8 +87,8 @@ def winner_message():
 
 
 def loss_message(secret_word):
-    print("OH NOOOO.... You lose!")
-    print("The word was {}".format(secret_word))
+    print("\n\nOH NOOOO.... You lose!")
+    print("\n\nThe word was {}".format(secret_word))
     print("    _______________         ")
     print("   /               \       ")
     print("  /                 \      ")
@@ -193,7 +193,7 @@ def play():    #game sequence
           correct_kick(kick, right_letters, secret_word)
           missing_letters = str(right_letters.count('_'))
           if (missing_letters == "0"): 
-              print("CONGRATS!! You have found all the letters of '{}'".format(secret_word.upper()))
+              print("\n\nCONGRATS!! You have found all the letters of '{}'".format(secret_word.upper()))
           """
           If the kick in secret_word is a correct kick inside of the secret_word
           and if the secret_word is complete, than print the message "CONGRATS..."
@@ -203,7 +203,7 @@ def play():    #game sequence
       else:
           errors += 1
           print(right_letters)          
-          print('\n\nYou have {} letters left to match'.format(missing_letters))
+          print('\n\There are still {} letters left to match'.format(missing_letters))
           print('\n\nYou have {} attempts'.format(7 - errors))
           gallows(errors)
           """
@@ -222,7 +222,7 @@ def play():    #game sequence
     else:
         loss_message(secret_word)
 
-    print("End of the game")
+    print("\n\nEnd of the game")
     """
 
     """
