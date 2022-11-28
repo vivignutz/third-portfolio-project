@@ -1,6 +1,7 @@
 #importing randomic words of the list words.txt
 import random
 
+
 def welcome_message():
     print("**********************************")
     print("***Welcome to the Hangman game!***")
@@ -15,12 +16,13 @@ def welcome_message():
     Function used to call the welcome message and instructions of the game. 
     """
 
+
 def secret_word_loads():
     words = []
     with open("words.txt", "r", encoding="utf-8") as file:
-      for line in file:
-        line = line.strip()      #strip to take the blank spaces
-        words.append(line)
+        for line in file:
+            line = line.strip()   
+            words.append(line)
 
     number = random.randrange(0, len(words))
     secret_word = words[number].upper()
@@ -38,10 +40,11 @@ def secret_word_loads():
 
 def initialize_hit_letters(word):
     return ["_" for letter in word]
-"""
-Function calls the chosen word and
-places an empty space "_" for each word
-"""
+  
+    """
+    Function calls the chosen word and
+    places an empty space "_" for each word
+    """
 
 
 def asks_kick():
@@ -68,7 +71,7 @@ def correct_kick(kick, right_letters, secret_word):
 
 
 def winner_message():
-    print("\n\nCongratulations! You won!!!")
+    print("\n\CONGRATULATIONS! YOU WON!!!")
     print("       ___________      ")
     print("      '._==_==_=_.'     ")
     print("      .-\\:      /-.    ")
@@ -87,7 +90,7 @@ def winner_message():
 
 
 def loss_message(secret_word):
-    print("\n\nOH NOOOO.... You lose!")
+    print("\n\nOH NOOOO.... YOU LOSE!!!")
     print("\n\nThe word was {}".format(secret_word))
     print("    _______________         ")
     print("   /               \       ")
@@ -105,6 +108,8 @@ def loss_message(secret_word):
     print("   \_             _/       ")
     print("     \_         _/         ")
     print("       \_______/           ")
+
+
 """
 This message will shows to the player in 
 case he exhaust his kicks and the secret word
