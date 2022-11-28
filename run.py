@@ -1,7 +1,7 @@
 #importing randomic words of the list words.txt
 import random
 
-def print_welcome_message():
+def welcome_message():
   print("**********************************")
   print("***Welcome to the Hangman game!***")
   print("**********************************\n")
@@ -14,7 +14,7 @@ def print_welcome_message():
 """
 Function used to call the welcome message and instructions of the game. 
 """
-print_welcome_message()
+welcome_message()
 
 
 def secret_word_loads():
@@ -77,7 +77,7 @@ def winner_message():
 
 
 def loss_message(secret_word):
-  print("BOAAAAAH.... You lose!")
+  print("OH NOOOO.... You lose!")
   print("The word was {}".format(secret_word))
   print("    _______________         ")
   print("   /               \       ")
@@ -95,3 +95,57 @@ def loss_message(secret_word):
   print("   \_             _/       ")
   print("     \_         _/         ")
   print("       \_______/           ")
+
+
+def gallows(errors):
+  print("  _______     ")
+  print(" |/      |    ")
+
+  if (errors == 1):
+    print(" |      (_)   ")
+    print(" |            ")
+    print(" |            ")
+    print(" |            ")
+
+  if (errors == 2):
+    print(" |      (_)   ")
+    print(" |      \     ")
+    print(" |            ")
+    print(" |            ")
+
+  if (errors == 3):
+    print(" |      (_)   ")
+    print(" |      \|    ")
+    print(" |            ")
+    print(" |            ")
+
+  if (errors == 4):
+    print(" |      (_)   ")
+    print(" |      \|/   ")
+    print(" |            ")
+    print(" |            ")
+
+  if (errors == 5):
+    print(" |      (_)   ")
+    print(" |      \|/   ")
+    print(" |       |    ")
+    print(" |            ")
+
+  if (errors == 6):
+    print(" |      (_)   ")
+    print(" |      \|/   ")
+    print(" |       |    ")
+    print(" |      /     ")
+
+  if (errors == 7):
+    print(" |      (_)   ")
+    print(" |      \|/   ")
+    print(" |       |    ")
+    print(" |      / \   ")
+
+  print(" |            ")
+  print("_|___         ")
+  print()
+
+
+
