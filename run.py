@@ -14,9 +14,6 @@ def welcome_message():
     """
     Function used to call the welcome message and instructions of the game. 
     """
-    
-    welcome_message()
-
 
 def secret_word_loads():
     words = []
@@ -28,6 +25,8 @@ def secret_word_loads():
     number = random.randrange(0, len(words))
     secret_word = words[number].upper()
     return secret_word
+    print(secret_word)
+
     """
     Function opens randomically one secret word of the word.txt
     The append here adds a word from my list words.txt.
@@ -49,10 +48,10 @@ def asks_kick():
     kick = input("\n\nWhich letter do you wanny try? ")
     kick = kick.strip().upper()
     return kick
-"""
-Requesting a letter kick.
-Upper used again for better visibility.
-"""
+    """
+    Requesting a letter kick.
+    Upper used again for better visibility.
+    """
 
 
 def correct_kick(kick, right_letters, secret_word):
@@ -61,11 +60,11 @@ def correct_kick(kick, right_letters, secret_word):
         if (kick == letter):
             right_letters[index] = letter
         index += 1 
-"""
-To achieve a correct kick: if kick matches with a letter of the 
-secret word, this letter will be pushed from index.
-Index +- >>>> it loops until match the same lenght of the word 
-"""
+        """
+        To achieve a correct kick: if kick matches with a letter of the 
+        secret word, this letter will be pushed from index.
+        Index += >>>> it loops until match the same lenght of the word 
+        """
 
 
 def winner_message():
@@ -170,6 +169,7 @@ Simple functions print() were used to build gallows.
 
 
 def play():    #game sequence
+  
     welcome_message()
 
     secret_word = secret_word_loads()
@@ -193,29 +193,29 @@ def play():    #game sequence
           correct_kick(kick, right_letters, secret_word)
           missing_letters = str(right_letters.count('_'))
           if (missing_letters == "0"): 
-            print("CONGRATS!! You have found all the letters of '{}'".
-                  format(secret_word.upper()))
+              print("CONGRATS!! You have found all the letters of '{}'".format(secret_word.upper()))
           """
           If the kick in secret_word is a correct kick inside of the secret_word
           and if the secret_word is complete, than print the message "CONGRATS..."
           """
         
         
-          else:
-              errors += 1
-              print(right_letters)
-              print('\n\nYou have {} letters left to match'.format(missing_letters))
-              print('\n\nYou have {} attempts'.format(7 - errors))
-              gallows(errors)
-              """
-              Otherwise, the right_letters are contabilized and subtracted
-              from the maximal attempts (7).    
-              """
+      else:
+          errors += 1
+          print(right_letters)          
+          print('\n\nYou have {} letters left to match'.format(missing_letters))
+          print('\n\nYou have {} attempts'.format(7 - errors))
+          gallows(errors)
+          """
+          Otherwise, the right_letters are contabilized and subtracted
+          from the maximal attempts (7).
+          """
 
-    hanged = errors == 7
-    got_it = "__" not in right_letters
+      hanged = errors == 7
+      got_it = "_" not in right_letters
 
-    print(right_letters)
+
+      print(right_letters)
 
     if (got_it):
         winner_message()
