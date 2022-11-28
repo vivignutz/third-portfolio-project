@@ -11,10 +11,11 @@ def welcome_message():
     print("word to bring you closer to getting it right.")
     print("If you miss, one part of your body will be hanged.\n")
     print("I wish you good luck!\n\n")
-"""
-Function used to call the welcome message and instructions of the game. 
-"""
-welcome_message()
+    """
+    Function used to call the welcome message and instructions of the game. 
+    """
+    
+    welcome_message()
 
 
 def secret_word_loads():
@@ -27,13 +28,13 @@ def secret_word_loads():
     number = random.randrange(0, len(words))
     secret_word = words[number].upper()
     return secret_word
-"""
-Function opens randomically one secret word of the word.txt
-The append here adds a word from my list words.txt.
+    """
+    Function opens randomically one secret word of the word.txt
+    The append here adds a word from my list words.txt.
 
-and returns a random integer between 0 and the lenght of the word.
-I choose "upper" in order to turn the returned letters more visible.
-"""
+    and returns a random integer between 0 and the lenght of the word.
+    I choose "upper" in order to turn the returned letters more visible.
+    """
 
 
 def initialize_hit_letters(word):
@@ -58,7 +59,7 @@ def correct_kick(kick, right_letters, secret_word):
     index = 0
     for letter in secret_word:
         if (kick == letter):
-          right_letters[index] = letter
+            right_letters[index] = letter
         index += 1 
 """
 To achieve a correct kick: if kick matches with a letter of the 
@@ -79,6 +80,11 @@ def winner_message():
     print("           ) (          ")
     print("         _.' '._        ")
     print("        '-------'       ")
+    """
+    This message will shows to the player in 
+    case he kick all letters right and win the
+    game.
+    """
 
 
 def loss_message(secret_word):
@@ -100,6 +106,11 @@ def loss_message(secret_word):
     print("   \_             _/       ")
     print("     \_         _/         ")
     print("       \_______/           ")
+"""
+This message will shows to the player in 
+case he exhaust his kicks and the secret word
+appears. The string .format(text) was used for that.
+"""
 
 
 def gallows(errors):
@@ -151,9 +162,14 @@ def gallows(errors):
     print(" |            ")
     print("_|___         ")
     print()
+"""
+The gallows is being designed acc. to the numbers of 
+errors of the player. 7 wrong kicks can be done in total.
+Simple functions print() were used to build gallows.
+"""
 
 
-def play():
+def play():    #game sequence
     welcome_message()
 
     secret_word = secret_word_loads()
@@ -167,35 +183,49 @@ def play():
 
     print(right_letters)
     while (not got_it and not hanged):
-
+      """
+      While loop for "got-it" kicks and still remaining attempts
+      """
+    
       kick = asks_kick()
 
       if (kick in secret_word):
-        correct_kick(kick, right_letters, secret_word)
-        missing_letters = str(right_letters.count('_'))
-        if (missing_letters == "0"):
-          print(
-            "CONGRATS!! You have found all the letters of '{}'".
-            format(secret_word.upper()))
-      else:
-        errors += 1
-        print(right_letters)
-        print('\n\nYou have {} letters left to match'.format(missing_letters))
-        print('\n\nYou have {} attempts'.format(7 - errors))
-        gallows(errors)
+          correct_kick(kick, right_letters, secret_word)
+          missing_letters = str(right_letters.count('_'))
+          if (missing_letters == "0"): 
+            print("CONGRATS!! You have found all the letters of '{}'".
+                  format(secret_word.upper()))
+          """
+          If the kick in secret_word is a correct kick inside of the secret_word
+          and if the secret_word is complete, than print the message "CONGRATS..."
+          """
+        
+        
+          else:
+              errors += 1
+              print(right_letters)
+              print('\n\nYou have {} letters left to match'.format(missing_letters))
+              print('\n\nYou have {} attempts'.format(7 - errors))
+              gallows(errors)
+              """
+              Otherwise, the right_letters are contabilized and subtracted
+              from the maximal attempts (7).    
+              """
 
     hanged = errors == 7
-    got_it = "_" not in right_letters
+    got_it = "__" not in right_letters
 
     print(right_letters)
 
     if (got_it):
-        print_winner_message()
+        winner_message()
     else:
-        print_loss_message(secret_word)
+        loss_message(secret_word)
 
     print("End of the game")
+    """
 
+    """
 
 if (__name__ == '__main__'):
-  play()
+    play()
