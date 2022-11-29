@@ -241,4 +241,8 @@ def play():
     """
 
 if (__name__ == '__main__'):
-    play()
+   play()
+   """
+   calling multiple functions (all) 
+   in order to play the game
+   """
