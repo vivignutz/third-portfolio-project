@@ -23,13 +23,13 @@ def secret_word_loads():
     words = []
     with open("words.txt", "r", encoding="utf-8") as file:
         for line in file:
-            line = line.strip()   
-            words.append(line)
+            line = line.strip()
+            if len(line) > 0: 
+                words.append(line)
 
     number = random.randrange(0, len(words))
     secret_word = words[number].upper()
     return secret_word
-    print(secret_word)
     """
     Function opens randomically one secret word of the word.txt
     The append here adds a word from my list words.txt.
@@ -48,13 +48,21 @@ def initialize_hit_letters(word):
 
 
 def asks_kick():
-    kick = input("\n\nWhich letter do you wanny try?  \n\n")
-    kick = kick.strip().upper()
-    return kick
     """
     Requesting a letter kick.
     Upper used again for better visibility.
     """
+    while True:
+        kick = input("\n\nWhich letter do you wanny try?  \n\n").strip()
+        
+        if (not kick.isalpha()) or len(kick) > 1:
+            print("Please eenter a single letter.")
+            continue
+        
+        break
+    
+        kick = kick.upper()
+        return kick
 
 
 def correct_kick(kick, right_letters, secret_word):
@@ -174,7 +182,11 @@ Simple functions print() were used to build gallows.
 
 
 def play():
-    #game sequence    
+    """
+    Missing_letters spaces have same lenght as
+    right_letters of secret_word
+    """    
+    #game sequence
   
     welcome_message()
     #calls the welcome_message
@@ -188,10 +200,7 @@ def play():
     got_it = False
     errors = 0
     missing_letters = len(right_letters)
-    """
-    issing_letters spaces have same lenght as
-    right_letters of secret_word
-    """
+
 
     print(right_letters)
     while (not got_it and not hanged):
@@ -214,15 +223,16 @@ def play():
         
         
       else:
-          errors += 1
-          print(right_letters)          
-          print('\n\nThere are still {} letters left to match'.format(missing_letters))
-          print('\n\nYou have {} attempts'.format(7 - errors))
-          gallows(errors)
-          """
-          Otherwise, the right_letters are contabilized and 
-          subtracted from the maximal attempts (7).
-          """
+        """
+        Otherwise, the right_letters are contabilized and 
+        subtracted from the maximal attempts (7).
+        """
+        errors += 1
+        print(right_letters)          
+        print('\n\nThere are still {} letters left to match'.format(missing_letters))
+        print('\n\nYou have {} attempts'.format(7 - errors))
+        gallows(errors)
+
 
       hanged = errors == 7
       got_it = "_" not in right_letters
@@ -239,10 +249,16 @@ def play():
     """
     "End of the game" will be printed in the end.
     """
+    
+    play_again = input(
+        "Enter Y to play again or any other key to quit.").strip().upper()
+    
+    if play_again == 'Y':
+        play()
 
-if (__name__ == '__main__'):
-   play()
-   """
-   calling multiple functions (all) 
-   in order to play the game
-   """
+    if (__name__ == '__main__'):
+        play()
+    """
+    calling multiple functions (all) 
+    in order to play the game
+    """
