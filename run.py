@@ -200,38 +200,39 @@ def play():
 
     print(right_letters)
     while (not got_it and not hanged):
-      """
-      While loop for "got-it" (right) kicks and 
-      still remaining attempts.
-      """
-    
-    kick = asks_kick()
-
-    if (kick in secret_word):
-        correct_kick(kick, right_letters, secret_word)
-        missing_letters = str(right_letters.count('_'))
-        if (missing_letters == "0"): 
-            print("\n\YES!! You have found all the letters of '{}'".format(secret_word.upper()))
         """
-        If the kick in secret_word is correct, and if the 
-        secret_word is complete, than print the message "YES!!..."
+        While loop for "got-it" (right) kicks and 
+        still remaining attempts.
         """
         
-        
-    else:
-        """
-        Otherwise, the right_letters are contabilized and 
-        subtracted from the maximal attempts (7).
-        """
-        errors += 1
-        print(right_letters)          
-        print('\n\nThere are still {} letters left to match'.format(missing_letters))
-        print('\n\nYou have {} attempts'.format(7 - errors))
-        gallows(errors)
+        kick = asks_kick()
+
+        if (kick in secret_word):
+            correct_kick(kick, right_letters, secret_word)
+            missing_letters = right_letters.count('_')
+            if (missing_letters == "0"):
+                print("\n\YES!! You have found all the letters of '{}'"
+                  .format(secret_word.upper()))
+            """
+            If the kick in secret_word is correct, and if the 
+            secret_word is complete, than print the message "YES!!..."
+            """
+            
+            
+        else:
+            """
+            Otherwise, the right_letters are contabilized and 
+            subtracted from the maximal attempts (7).
+            """
+            errors += 1
+            print(right_letters)          
+            print('\n\nThere are still {} letters left to match'.format(missing_letters))
+            print('\n\nYou have {} attempts'.format(7 - errors))
+            gallows(errors)
 
 
-    hanged = errors == 7
-    got_it = "_" not in right_letters
+        hanged = errors == 7
+        got_it = "_" not in right_letters
 
 
     print(right_letters)
@@ -253,7 +254,7 @@ def play():
         play()
 
     if (__name__ == '__main__'):
-        play()
+            play()
     """
     calling multiple functions (all) 
     in order to play the game
