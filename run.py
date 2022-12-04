@@ -253,8 +253,8 @@ def play():
     if play_again == 'Y':
         play()
 
-    if (__name__ == '__main__'):
-            play()
+if (__name__ == '__main__'):
+    play()
     """
     calling multiple functions (all) 
     in order to play the game
