@@ -229,7 +229,6 @@ def play():
         hanged = errors == 7
         got_it = "_" not in right_letters
 
-    print(right_letters)
 
     if (got_it):
         winner_message()
