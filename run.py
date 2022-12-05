@@ -58,8 +58,6 @@ def asks_kick():
             print("Please eenter a single letter.")
             continue
 
-        #break
-
         kick = kick.upper()
         return kick
 
@@ -121,8 +119,10 @@ def loss_message(secret_word):
 
 
 def gallows(errors):
-    # The gallows is being designed acc. to the numbers of
-    # errors of the player. 7 wrong kicks can be done in total.
+    """
+    The gallows is being designed acc. to the numbers of
+    errors of the player.
+    """
 
     print("  _______     ")
     print(" |/      |    ")
@@ -214,7 +214,7 @@ def play():
 
             if (missing_letters == "0"):
                 print("\n\YES!! You have found all the letters of '{}'"
-                    .format(secret_word.upper()))
+                        .format(secret_word.upper()))
 
         else:
             # Otherwise, the right_letters are contabilized and
@@ -222,13 +222,13 @@ def play():
 
             errors += 1
             print(right_letters)
-            print('\n\nThere are still {} letters left to match'.format(missing_letters))
+            print('\n\nThere are still {} letters left to match'
+                    .format(missing_letters))
             print('\n\nYou have {} attempts'.format(7 - errors))
             gallows(errors)
 
         hanged = errors == 7
         got_it = "_" not in right_letters
-
 
     if (got_it):
         winner_message()
