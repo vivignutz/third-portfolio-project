@@ -58,7 +58,7 @@ def asks_kick():
             print("Please eenter a single letter.")
             continue
 
-        break
+        #break
 
         kick = kick.upper()
         return kick
@@ -210,6 +210,8 @@ def play():
             """
             correct_kick(kick, right_letters, secret_word)
             missing_letters = right_letters.count('_')
+            print(right_letters)
+
             if (missing_letters == "0"):
                 print("\n\YES!! You have found all the letters of '{}'"
                     .format(secret_word.upper()))
